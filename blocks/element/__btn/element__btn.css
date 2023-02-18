@@ -1,0 +1,10 @@
+.element__btn {
+  grid-area: heart;
+  max-width: 21px;
+  max-height: 19px;
+  transition: opacity 0.2s linear;
+}
+.element__btn:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
