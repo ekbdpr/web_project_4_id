@@ -1,0 +1,12 @@
+.profile__btn-edit {
+  grid-area: button;
+  min-width: 24px;
+  min-height: 24px;
+  border: 1px solid #fff;
+}
+@media screen and (max-width: 600px) {
+  .profile__btn-edit {
+    min-width: 18px;
+    min-height: 18px;
+  }
+}

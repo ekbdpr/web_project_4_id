@@ -1,0 +1,15 @@
+.profile__info {
+  display: grid;
+  align-content: center;
+  grid-template-areas:
+    "username button"
+    "title title";
+  gap: 16px 18px;
+  margin-left: 30px;
+}
+@media screen and (max-width: 1024px) {
+  .profile__info {
+    margin: 30px 0;
+    gap: 14px 10px;
+  }
+}

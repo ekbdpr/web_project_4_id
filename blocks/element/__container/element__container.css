@@ -1,0 +1,8 @@
+.element__container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 243px 1fr;
+  grid-template-areas:
+    "image image"
+    "text heart";
+}

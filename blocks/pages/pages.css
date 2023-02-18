@@ -1,0 +1,18 @@
+.pages {
+  max-width: 880px;
+  width: 100vw;
+  margin: 45px 200px 60px;
+  background-color: #000;
+}
+@media screen and (max-width: 1024px) {
+  .pages {
+    max-width: 600px;
+    margin: 28px 19px 36px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .pages {
+    max-width: 320px;
+    margin: 28px 19px 36px;
+  }
+}
