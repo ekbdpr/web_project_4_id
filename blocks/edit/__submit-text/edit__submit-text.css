@@ -1,0 +1,11 @@
+.edit__submit-text {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+}
+@media screen and (max-width: 600px) {
+  .edit__submit-text {
+    font-size: 14px;
+    line-height: 1.17;
+  }
+}

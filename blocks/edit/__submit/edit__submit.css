@@ -1,0 +1,12 @@
+.edit__submit {
+  min-height: 50px;
+  width: 100%;
+  margin-top: 48px;
+  color: #fff;
+  background-color: #000;
+  transition: opacity 0.2s linear;
+}
+.edit__submit:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

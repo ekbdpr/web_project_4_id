@@ -17,6 +17,7 @@
             <hr class="header__line">
         </header>
         <main>
+
             <div class="profile">
                 <img src="./images/avatar_image.png" alt="profile picture" class="profile__avatar">
                 <div class="profile__info">
@@ -82,6 +83,20 @@
                 <p class="footer__credit">&copy; 2023 Around The U.S</p>
             </div>
         </main>
+        <!-- popup menu -->
+        <div class="edit">
+            <button class="btn edit__close"><img src="./images/symbols/close.svg" alt="close icon"></button>
+            <div class="edit__container">
+                <h2 class="edit__form-title">Edit Profil</h2>
+                <form class="edit__form">
+                    <input type="text" name="name" id="edit-name" class="edit__username" placeholder="Name">
+                    <input type="text" name="title" id="edit-title" class="edit__title" placeholder="Title">
+                </form>
+                <button class="btn edit__submit">
+                    <p class="edit__submit-text">Simpan</p>
+                </button>
+            </div>
+        </div>
     </div>
     <script src="./scripts/script.js"></script>
 </body>

@@ -26,3 +26,13 @@
 /* footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__credit/footer__credit.css);
+/* edit form */
+@import url(../blocks/edit/edit.css);
+@import url(../blocks/edit/__close/edit__close.css);
+@import url(../blocks/edit/__container/edit__container.css);
+@import url(../blocks/edit/__form-title/edit__form-title.css);
+@import url(../blocks/edit/__form/edit__form.css);
+@import url(../blocks/edit/__username/edit__username.css);
+@import url(../blocks/edit/__title/edit__title.css);
+@import url(../blocks/edit/__submit/edit__submit.css);
+@import url(../blocks/edit/__submit-text/edit__submit-text.css);
