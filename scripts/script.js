@@ -31,6 +31,7 @@ function hideEditForm() {
 }
 
 function submitForm() {
+  event.preventDefault();
   let maxChars = 20;
   userName.textContent = editUsername.value.slice(0, maxChars);
   job.textContent = editJob.value.slice(0, maxChars);
@@ -43,7 +44,7 @@ function submitForm() {
   hideEditForm();
 }
 
-function enterSubmit(event) {
+function enterSubmit() {
   if (event.keyCode === 13) {
     submitForm();
   }
