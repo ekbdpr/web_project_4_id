@@ -11,7 +11,7 @@
 
 **Website Link**
 
-- [Tautan ke Website](https://ekhabla.github.io/web_project_4_id/)
+- [Tautan ke Website](https://ekbdpr.github.io/web_project_4_id/)
 
 Project pada kali ini adalah pertama kalinya saya menggunakan JavaScript dan ini sangat menyenangkan. Saya menggunakan beberapa fungsi untuk menampilkan form yang dapat mengedit konten Nama dan Pekerjaan saya pada website nya. Prinsip kerja dari edit button tersebut ialah :
 
