@@ -3,6 +3,7 @@
 /* page settings */
 @import url(../blocks/content/content.css);
 @import url(../blocks/pages/pages.css);
+@import url(../blocks/pages/_dimmed/pages_dimmed.css);
 /* header section*/
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/header/__line/header__line.css);
@@ -13,7 +14,7 @@
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__username/profile__username.css);
-@import url(../blocks/profile/__title/profile__title.css);
+@import url(../blocks/profile/__job/profile__job.css);
 @import url(../blocks/profile/__btn-edit/profile__btn-edit.css);
 @import url(../blocks/profile/__btn-add/profile__btn-add.css);
 /* element sections */
@@ -28,11 +29,11 @@
 @import url(../blocks/footer/__credit/footer__credit.css);
 /* edit form */
 @import url(../blocks/edit/edit.css);
+@import url(../blocks/edit/_activate/edit_activate.css);
 @import url(../blocks/edit/__close/edit__close.css);
 @import url(../blocks/edit/__container/edit__container.css);
 @import url(../blocks/edit/__form-title/edit__form-title.css);
 @import url(../blocks/edit/__form/edit__form.css);
 @import url(../blocks/edit/__username/edit__username.css);
-@import url(../blocks/edit/__title/edit__title.css);
+@import url(../blocks/edit/__job/edit__job.css);
 @import url(../blocks/edit/__submit/edit__submit.css);
-@import url(../blocks/edit/__submit-text/edit__submit-text.css);

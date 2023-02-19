@@ -1,5 +1,4 @@
 .edit {
-  visibility: hidden;
   max-width: 500px;
   width: 100vw;
   display: flex;
@@ -8,6 +7,10 @@
   position: absolute;
   top: 20%;
   left: calc((100vw - 50%) - 250px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1;
 }
 @media screen and (max-width: 600px) {
   .edit {

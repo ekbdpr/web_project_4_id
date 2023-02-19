@@ -184,3 +184,19 @@ a {
   font-weight: normal;
   font-family: "Inter", sans-serif;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: transparent 0 0 5px;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(87, 85, 85, 0.5);
+  border-radius: 10px;
+}

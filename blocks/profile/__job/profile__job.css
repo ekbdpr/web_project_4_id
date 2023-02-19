@@ -1,4 +1,4 @@
-.profile__title {
+.profile__job {
   grid-area: title;
   color: #fff;
   font-weight: 400;
@@ -6,12 +6,12 @@
   line-height: 1.22;
 }
 @media screen and (max-width: 1024px) {
-  .profile__title {
+  .profile__job {
     text-align: center;
   }
 }
 @media screen and (max-width: 600px) {
-  .profile__title {
+  .profile__job {
     font-size: 14px;
     line-height: 1.17;
     text-align: center;

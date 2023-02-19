@@ -1,3 +1,8 @@
 .edit__close {
   margin: 0 0 0 auto;
+  transition: opacity 0.2s linear;
+}
+.edit__close:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
