@@ -11,18 +11,6 @@
 </head>
 
 <body class="content">
-    <!-- popup menu -->
-    <div class="edit">
-        <button class="btn edit__close"><img src="./images/symbols/close.svg" alt="close icon"></button>
-        <div class="edit__container">
-            <span class="edit__form-title">Edit Profil</span>
-            <form class="edit__form">
-                <input type="text" name="name" id="edit-name" class="edit__username" placeholder="Nama">
-                <input type="text" name="title" id="edit-title" class="edit__job" placeholder="Tentang saya">
-                <button type="submit" class="btn edit__submit">Simpan</button>
-            </form>
-        </div>
-    </div>
     <!-- contents -->
     <div class="pages">
         <header class="header">
@@ -96,6 +84,20 @@
             </div>
         </main>
     </div>
+    <!-- popup menu -->
+    <template id="editProfileTemp">
+        <div class="edit">
+            <button class="btn edit__close"><img src="./images/symbols/close.svg" alt="close icon"></button>
+            <div class="edit__container">
+                <span class="edit__form-title">Edit Profil</span>
+                <form class="edit__form">
+                    <input type="text" name="name" id="edit-name" class="edit__username" placeholder="Nama">
+                    <input type="text" name="title" id="edit-title" class="edit__job" placeholder="Tentang saya">
+                    <button type="submit" class="btn edit__submit">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </template>
     <script src="./scripts/script.js"></script>
 </body>
 
