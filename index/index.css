@@ -24,6 +24,7 @@
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__text/element__text.css);
 @import url(../blocks/element/__heart-btn/element__heart-btn.css);
+@import url(../blocks/element/__heart-btn/_active/element__heart-btn_active.css);
 @import url(../blocks/element/__delete-btn/element__delete-btn.css);
 /* footer */
 @import url(../blocks/footer/footer.css);
@@ -39,7 +40,3 @@
 @import url(../blocks/edit/__submit/edit__submit.css);
 /* popUp */
 @import url(../blocks/popUp/popUp.css);
-
-.element__heart_active {
-  background-image: url(../../../images/symbols/heart_active.svg);
-}

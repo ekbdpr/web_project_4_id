@@ -1,3 +1,4 @@
 .pages_dimmed {
   opacity: 0.5;
+  pointer-events: none;
 }

@@ -112,12 +112,12 @@ const heartActive = document.querySelectorAll(".element__heart-btn");
 // heart button handler
 heartActive.forEach((element) => {
   element.addEventListener("click", function () {
-    let isActive = element.classList.contains("element__heart_active");
+    let isActive = element.classList.contains("element__heart-btn_active");
 
     if (!isActive) {
-      element.classList.add("element__heart_active");
+      element.classList.add("element__heart-btn_active");
     } else {
-      element.classList.remove("element__heart_active");
+      element.classList.remove("element__heart-btn_active");
     }
   });
 });
