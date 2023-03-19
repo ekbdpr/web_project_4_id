@@ -1,13 +1,10 @@
-.element__btn {
+.element__heart-btn {
   grid-area: heart;
   max-width: 21px;
   max-height: 19px;
   transition: opacity 0.2s linear;
 }
-.element__btn:hover {
+.element__heart-btn:hover {
   opacity: 0.5;
   cursor: pointer;
-}
-.element__btn:active {
-  background-image: url(../../../images/symbols/heart_active.svg);
 }
