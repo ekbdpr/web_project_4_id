@@ -30,11 +30,15 @@ const initialCards = [
 const mainBody = document.querySelector(".content");
 const page = document.querySelector(".pages");
 const editProfileBtn = document.querySelector(".profile__btn-edit");
+const addPostBtn = document.querySelector(".profile__btn-add");
 
-// add event listeners
+// event listeners
 editProfileBtn.addEventListener("click", () => {
   showPopUp("#editProfileTemp", ".edit", ".edit__close");
 });
+addPostBtn.addEventListener("click", () =>
+  showPopUp("#addPostTemp", ".add", ".add__close")
+);
 
 // show popUp window handler
 function showPopUp(element, elementClass, closeElement) {
@@ -42,7 +46,10 @@ function showPopUp(element, elementClass, closeElement) {
   const templateNode = templateId.querySelector(elementClass).cloneNode(true);
 
   mainBody.append(templateNode);
-  profileData(templateNode);
+
+  if (element === "#editProfileTemp") {
+    profileData(templateNode);
+  }
 
   setTimeout(() => {
     templateNode.classList.add("popUp");
