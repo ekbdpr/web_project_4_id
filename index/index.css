@@ -45,13 +45,14 @@
 @import url(../blocks/add/__close/add__close.css);
 @import url(../blocks/add/__form-title/add__form-title.css);
 @import url(../blocks/add/__form/add__form.css);
-@import url(../blocks/add/__username/add__username.css);
-@import url(../blocks/add/__job/add__job.css);
+@import url(../blocks/add/__title/add__title.css);
+@import url(../blocks/add/__link/add__link.css);
 @import url(../blocks/add/__submit/add__submit.css);
 /* show picture */
 @import url(../blocks/show-picture/show-picture.css);
 @import url(../blocks/show-picture/__container/show-picture__container.css);
 @import url(../blocks/show-picture/__close/show-picture__close.css);
 @import url(../blocks/show-picture/__image/show-picture__image.css);
+@import url(../blocks/show-picture/__text/show-picture__text.css);
 /* popUp */
 @import url(../blocks/popUp/popUp.css);

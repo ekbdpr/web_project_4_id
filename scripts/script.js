@@ -26,8 +26,8 @@ const initialCards = [
   },
 ];
 
-// insert card to the page based on the array of cards
-initialCards.forEach((card) => {
+// create card and prepend to array + delete the card when clicked
+function createCard(card) {
   const elementsList = document.querySelector(".element");
 
   const cardTemplate = document.querySelector("#cardTemp").content;
@@ -36,17 +36,56 @@ initialCards.forEach((card) => {
     .cloneNode(true);
   const elementImage = cardElement.querySelector(".element__image");
   const elementText = cardElement.querySelector(".element__text");
+  const elementDelete = cardElement.querySelector(".element__delete-btn");
 
   elementImage.src = card.link;
   elementImage.alt = card.name;
   elementText.textContent = card.name;
 
-  elementsList.append(cardElement);
-
   elementImage.addEventListener("click", () => {
     showPopUp("#showPictTemp", ".show-picture", ".show-picture__close", card);
   });
+
+  elementDelete.addEventListener("click", (event) => {
+    const index = initialCards.indexOf(card);
+    if (index > -1) {
+      initialCards.splice(index, 1);
+    }
+    event.target.closest(".element__item").remove();
+  });
+
+  elementsList.prepend(cardElement);
+}
+
+// insert card to the page based on the array of cards
+initialCards.forEach((card) => {
+  createCard(card);
 });
+
+// submit new card
+function newPost() {
+  const titleInput = document.querySelector(".add__title");
+  const linkInput = document.querySelector(".add__link");
+  const addSubmit = document.querySelector(".add__submit");
+
+  addSubmit.addEventListener("click", (evt) => {
+    evt.preventDefault();
+
+    const newCard = {
+      name: titleInput.value,
+      link: linkInput.value,
+    };
+
+    initialCards.push(newCard);
+
+    createCard(newCard);
+
+    heartButtonHandler();
+
+    const templateNode = document.querySelector(".add");
+    removePopUp(templateNode);
+  });
+}
 
 // define global variables for popUp
 const mainBody = document.querySelector(".content");
@@ -73,11 +112,17 @@ function showPopUp(element, elementClass, closeElement, card) {
     profileData(templateNode);
   }
 
+  if (element === "#addPostTemp") {
+    newPost();
+  }
+
   if (element === "#showPictTemp") {
     const targetImage = document.querySelector(".show-picture__image");
+    const targetText = document.querySelector(".show-picture__text");
 
     targetImage.src = card.link;
     targetImage.alt = card.name;
+    targetText.textContent = card.name;
   }
 
   setTimeout(() => {
@@ -133,7 +178,10 @@ function updateProfile(
   userName.textContent = editUserName.value.slice(0, maxChars);
   userJob.textContent = editUserJob.value.slice(0, maxChars);
 
-  if (userName.length > maxChars || userJob.length > maxChars) {
+  if (
+    editUserName.value.length > maxChars ||
+    editUserJob.value.length > maxChars
+  ) {
     alert("Max chars exceeded");
     return;
   }
@@ -141,18 +189,21 @@ function updateProfile(
   removePopUp(templateNode);
 }
 
-// define global variables for heart button
-const heartActive = document.querySelectorAll(".element__heart-btn");
-
 // heart button handler
-heartActive.forEach((element) => {
-  element.addEventListener("click", function () {
-    let isActive = element.classList.contains("element__heart-btn_active");
+function heartButtonHandler() {
+  const heartActive = document.querySelectorAll(".element__heart-btn");
 
-    if (!isActive) {
-      element.classList.add("element__heart-btn_active");
-    } else {
-      element.classList.remove("element__heart-btn_active");
-    }
+  heartActive.forEach((element) => {
+    element.addEventListener("click", function () {
+      let isActive = element.classList.contains("element__heart-btn_active");
+
+      if (!isActive) {
+        element.classList.add("element__heart-btn_active");
+      } else {
+        element.classList.remove("element__heart-btn_active");
+      }
+    });
   });
-});
+}
+
+heartButtonHandler();
