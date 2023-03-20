@@ -1,12 +1,11 @@
 .edit {
   max-width: 500px;
-  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: absolute;
   top: 20%;
-  left: calc((100vw - 50%) - 250px);
+  left: auto;
   z-index: 1;
   opacity: 0;
   visibility: hidden;
@@ -15,6 +14,5 @@
 @media screen and (max-width: 600px) {
   .edit {
     max-width: 282px;
-    left: calc((100vw - 50%) - 141px);
   }
 }

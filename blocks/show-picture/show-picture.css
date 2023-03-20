@@ -1,18 +1,14 @@
-.add {
-  max-width: 500px;
+.show-picture {
+  max-width: auto;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: 20%;
+  top: 10%;
   left: auto;
   z-index: 1;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s linear, visibility 0s linear;
-}
-@media screen and (max-width: 600px) {
-  .add {
-    max-width: 282px;
-  }
 }

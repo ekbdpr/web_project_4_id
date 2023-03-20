@@ -1,4 +1,4 @@
-.add__close {
+.show-picture__close {
   margin: 0 0 0 auto;
   transition: opacity 0.2s linear;
   position: absolute;
@@ -6,11 +6,11 @@
   right: -40px;
 }
 @media screen and (max-width: 600px) {
-  .add__close {
+  .show-picture__close {
     right: 0;
   }
 }
-.add__close:hover {
+.show-picture__close:hover {
   opacity: 0.6;
   cursor: pointer;
 }

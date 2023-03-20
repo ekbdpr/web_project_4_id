@@ -26,6 +26,28 @@ const initialCards = [
   },
 ];
 
+// insert card to the page based on the array of cards
+initialCards.forEach((card) => {
+  const elementsList = document.querySelector(".element");
+
+  const cardTemplate = document.querySelector("#cardTemp").content;
+  const cardElement = cardTemplate
+    .querySelector(".element__item")
+    .cloneNode(true);
+  const elementImage = cardElement.querySelector(".element__image");
+  const elementText = cardElement.querySelector(".element__text");
+
+  elementImage.src = card.link;
+  elementImage.alt = card.name;
+  elementText.textContent = card.name;
+
+  elementsList.append(cardElement);
+
+  elementImage.addEventListener("click", () => {
+    showPopUp("#showPictTemp", ".show-picture", ".show-picture__close", card);
+  });
+});
+
 // define global variables for popUp
 const mainBody = document.querySelector(".content");
 const page = document.querySelector(".pages");
@@ -41,7 +63,7 @@ addPostBtn.addEventListener("click", () =>
 );
 
 // show popUp window handler
-function showPopUp(element, elementClass, closeElement) {
+function showPopUp(element, elementClass, closeElement, card) {
   const templateId = document.querySelector(element).content;
   const templateNode = templateId.querySelector(elementClass).cloneNode(true);
 
@@ -51,10 +73,16 @@ function showPopUp(element, elementClass, closeElement) {
     profileData(templateNode);
   }
 
+  if (element === "#showPictTemp") {
+    const targetImage = document.querySelector(".show-picture__image");
+
+    targetImage.src = card.link;
+    targetImage.alt = card.name;
+  }
+
   setTimeout(() => {
     templateNode.classList.add("popUp");
     page.classList.add("pages_dimmed");
-    mainBody.setAttribute("style", "overflow: hidden");
   }, 5);
 
   const removeElement = document.querySelector(closeElement);
