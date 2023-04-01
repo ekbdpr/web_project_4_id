@@ -72,10 +72,6 @@ function getElementClone(clone, selector) {
   return clone.querySelector(selector);
 }
 
-function getElementAll(selector) {
-  return document.querySelectorAll(selector);
-}
-
 function cloneElement(node, selector) {
   return node.querySelector(selector).cloneNode(true);
 }
@@ -144,9 +140,16 @@ function showTemp(templateSelector, contentSelector, closeBtnSelector, evt) {
   const templateClone = cloneElement(templateId, contentSelector);
   SELECTORS.MODAL_TEMP = templateClone;
 
+  const clickOutsideModal = (evt) => {
+    if (!templateClone.contains(evt.target)) {
+      hidePopUp();
+      document.removeEventListener("click", clickOutsideModal);
+    }
+  };
+
   switch (contentSelector) {
     case SELECTORS.EDIT_TEMP:
-      profileValue();
+      profileValue(clickOutsideModal);
       break;
 
     case SELECTORS.PICTURE_TEMP:
@@ -161,7 +164,10 @@ function showTemp(templateSelector, contentSelector, closeBtnSelector, evt) {
 
     case SELECTORS.ADD_TEMP:
       setTimeout(() => {
-        addEventListener(SELECTORS.ADD_SUBMIT, "click", addCard);
+        addEventListener(SELECTORS.ADD_SUBMIT, "click", (evt) => {
+          addCard(evt);
+          document.removeEventListener("click", clickOutsideModal);
+        });
       }, 100);
       break;
 
@@ -172,9 +178,19 @@ function showTemp(templateSelector, contentSelector, closeBtnSelector, evt) {
   getElement(SELECTORS.MAIN_BODY).appendChild(templateClone);
   togglePage(templateClone);
 
+  addEventListener(closeBtnSelector, "click", () => {
+    hidePopUp();
+    document.removeEventListener("click", clickOutsideModal);
+  });
+  document.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape" && document.contains(templateClone)) {
+      hidePopUp();
+      document.removeEventListener("click", clickOutsideModal);
+    }
+  });
   setTimeout(() => {
+    document.addEventListener("click", clickOutsideModal);
     enableValidation();
-    addEventListener(closeBtnSelector, "click", () => hidePopUp());
   }, 100);
 }
 
@@ -204,7 +220,7 @@ function togglePage(temp) {
   }, 100);
 }
 
-function profileValue() {
+function profileValue(clickOutsideModal) {
   setTimeout(() => {
     getElement(SELECTORS.EDIT_USERNAME).value = getElement(
       SELECTORS.PROFILE_USERNAME
@@ -213,11 +229,13 @@ function profileValue() {
       SELECTORS.PROFILE_JOB
     ).textContent;
 
-    addEventListener(SELECTORS.EDIT_SUBMIT, "click", submitProfileChanges);
+    addEventListener(SELECTORS.EDIT_SUBMIT, "click", (evt) => {
+      submitProfileChanges(evt, clickOutsideModal);
+    });
   }, 100);
 }
 
-function submitProfileChanges(evt) {
+function submitProfileChanges(evt, clickOutsideModal) {
   evt.preventDefault();
 
   getElement(SELECTORS.PROFILE_USERNAME).textContent = getElement(
@@ -228,6 +246,7 @@ function submitProfileChanges(evt) {
   ).value;
 
   hidePopUp();
+  document.removeEventListener("click", clickOutsideModal);
 }
 
 function heartButtonToggle(evt) {
