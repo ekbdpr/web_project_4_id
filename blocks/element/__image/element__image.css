@@ -4,9 +4,7 @@
   height: 100%;
   object-fit: cover;
   aspect-ratio: 1 / 1;
-  transition: opacity 0.2s linear;
 }
 .element__image:hover {
-  opacity: 0.6;
   cursor: pointer;
 }

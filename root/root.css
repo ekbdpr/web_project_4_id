@@ -185,6 +185,10 @@ a {
   font-family: "Inter", sans-serif;
 }
 
+input {
+  padding: 0;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   position: absolute;

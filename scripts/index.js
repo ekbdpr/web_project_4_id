@@ -1,3 +1,5 @@
+import { enableValidation } from "./validation.js";
+
 const initialCards = [
   {
     name: "Lembah Yosemite",
@@ -48,6 +50,7 @@ const SELECTORS = {
   EDIT_USERNAME: ".edit__username",
   EDIT_SUBMIT: ".edit__submit",
   EDIT_TEMP: ".edit",
+  FORM: ".form",
   MAIN_BODY: ".content",
   MODAL_TEMP: null,
   PAGE: ".pages",
@@ -170,6 +173,7 @@ function showTemp(templateSelector, contentSelector, closeBtnSelector, evt) {
   togglePage(templateClone);
 
   setTimeout(() => {
+    enableValidation();
     addEventListener(closeBtnSelector, "click", () => hidePopUp());
   }, 100);
 }
@@ -184,9 +188,19 @@ function hidePopUp() {
 }
 
 function togglePage(temp) {
+  const scrollbarWidth =
+    window.innerWidth - document.documentElement.clientWidth;
+
   setTimeout(() => {
     temp.classList.toggle("popUp");
-    getElement(SELECTORS.PAGE).classList.toggle("pages_dimmed");
+    getElement(SELECTORS.PAGE).classList.toggle("pages_disabled");
+    getElement(SELECTORS.MAIN_BODY).style.overflow =
+      getElement(SELECTORS.MAIN_BODY).style.overflow === "hidden"
+        ? "auto"
+        : "hidden";
+    getElement(
+      SELECTORS.MAIN_BODY
+    ).style.width = `calc(100% - ${scrollbarWidth}px)`;
   }, 100);
 }
 
@@ -206,22 +220,12 @@ function profileValue() {
 function submitProfileChanges(evt) {
   evt.preventDefault();
 
-  const maxChars = 20;
-
   getElement(SELECTORS.PROFILE_USERNAME).textContent = getElement(
     SELECTORS.EDIT_USERNAME
-  ).value.slice(0, maxChars);
+  ).value;
   getElement(SELECTORS.PROFILE_JOB).textContent = getElement(
     SELECTORS.EDIT_JOB
-  ).value.slice(0, maxChars);
-
-  if (
-    getElement(SELECTORS.EDIT_USERNAME).value.length > maxChars ||
-    getElement(SELECTORS.EDIT_JOB).value.length > maxChars
-  ) {
-    alert("Max chars exceeded");
-    return;
-  }
+  ).value;
 
   hidePopUp();
 }

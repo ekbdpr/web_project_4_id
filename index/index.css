@@ -3,12 +3,13 @@
 /* page settings */
 @import url(../blocks/content/content.css);
 @import url(../blocks/pages/pages.css);
-@import url(../blocks/pages/_dimmed/pages_dimmed.css);
+@import url(../blocks/pages/_disabled/pages_disabled.css);
 /* header section*/
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/header/__line/header__line.css);
 /* buttons */
 @import url(../blocks/btn/btn.css);
+@import url(../blocks/btn/_inactive/btn_inactive.css);
 @import url(../blocks/btn/__close/btn__close.css);
 /* profile section */
 @import url(../blocks/profile/profile.css);
@@ -30,6 +31,10 @@
 /* footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__credit/footer__credit.css);
+/* form */
+@import url(../blocks/form/__input/_type/_error/form__input_type_error.css);
+@import url(../blocks/form/__text-container/form__text-container.css);
+@import url(../blocks/form/__input-error/form__input-error.css);
 /* edit form */
 @import url(../blocks/edit/edit.css);
 @import url(../blocks/edit/__container/edit__container.css);

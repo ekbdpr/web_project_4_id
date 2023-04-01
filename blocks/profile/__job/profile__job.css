@@ -4,6 +4,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.22;
+  overflow-wrap: anywhere;
 }
 @media screen and (max-width: 1024px) {
   .profile__job {

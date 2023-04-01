@@ -43,9 +43,13 @@
                 <button class="btn edit__close"><img src="./images/symbols/close.svg" alt="close icon"
                         class="btn__close"></button>
                 <span class="edit__form-title">Edit Profil</span>
-                <form class="edit__form">
-                    <input type="text" name="name" id="edit-name" class="edit__username" placeholder="Nama">
-                    <input type="text" name="title" id="edit-title" class="edit__job" placeholder="Tentang saya">
+                <form class="form edit__form" novalidate>
+                    <input type="text" name="name" id="edit-name" class="form__input edit__username" placeholder="Nama"
+                        minlength="2" maxlength="40" required>
+                    <div class="form__text-container"><span class="form__input-error edit-name-error"></span></div>
+                    <input type="text" name="title" id="edit-title" class="form__input edit__job"
+                        placeholder="Tentang saya" minlength="2" maxlength="200" required>
+                    <div class="form__text-container"><span class="form__input-error edit-title-error"></span></div>
                     <button type="submit" class="btn edit__submit">Simpan</button>
                 </form>
             </div>
@@ -57,9 +61,17 @@
                 <button class="btn add__close"><img src="./images/symbols/close.svg" alt="close icon"
                         class="btn__close"></button>
                 <span class="add__form-title">Tempat baru</span>
-                <form class="add__form">
-                    <input type="text" name="title" id="add-title" class="add__title" placeholder="Judul">
-                    <input type="text" name="link" id="add-link" class="add__link" placeholder="Tautan gambar">
+                <form class="form add__form" novalidate>
+                    <input type="text" name="title" id="add-title" class="form__input add__title" placeholder="Judul"
+                        minlength="2" maxlength="30" required>
+                    <div class="form__text-container">
+                        <span class="form__input-error add-title-error"></span>
+                    </div>
+                    <input type="url" name="link" id="add-link" class="form__input add__link"
+                        placeholder="Tautan gambar" required>
+                    <div class="form__text-container">
+                        <span class="form__input-error add-link-error"></span>
+                    </div>
                     <button type="submit" class="btn add__submit">Buat</button>
                 </form>
             </div>
@@ -87,7 +99,8 @@
             </div>
         </div>
     </template>
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/index.js" type="module"></script>
+    <script src="./scripts/validation.js" type="module"></script>
 </body>
 
 </html>
