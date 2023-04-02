@@ -194,7 +194,6 @@ function showTemp(templateSelector, contentSelector, closeBtnSelector, evt) {
 
   document.addEventListener("keydown", (evt) => {
     if (evt.key === "Escape" && document.contains(templateClone)) {
-      console.log("keydown");
       keydownHandler(evt);
     }
   });
