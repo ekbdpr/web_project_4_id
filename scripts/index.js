@@ -182,12 +182,14 @@ function showTemp(templateSelector, contentSelector, closeBtnSelector, evt) {
     hidePopUp();
     document.removeEventListener("click", clickOutsideModal);
   });
+
   document.addEventListener("keydown", (evt) => {
     if (evt.key === "Escape" && document.contains(templateClone)) {
       hidePopUp();
       document.removeEventListener("click", clickOutsideModal);
     }
   });
+
   setTimeout(() => {
     document.addEventListener("click", clickOutsideModal);
     enableValidation();
