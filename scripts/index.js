@@ -147,6 +147,15 @@ function showTemp(templateSelector, contentSelector, closeBtnSelector, evt) {
     }
   };
 
+  const keydownHandler = (evt) => {
+    if (evt.key === "Escape" && document.contains(templateClone)) {
+      hidePopUp();
+
+      document.removeEventListener("keydown", keydownHandler);
+      document.removeEventListener("click", clickOutsideModal);
+    }
+  };
+
   switch (contentSelector) {
     case SELECTORS.EDIT_TEMP:
       profileValue(clickOutsideModal);
@@ -185,8 +194,8 @@ function showTemp(templateSelector, contentSelector, closeBtnSelector, evt) {
 
   document.addEventListener("keydown", (evt) => {
     if (evt.key === "Escape" && document.contains(templateClone)) {
-      hidePopUp();
-      document.removeEventListener("click", clickOutsideModal);
+      console.log("keydown");
+      keydownHandler(evt);
     }
   });
 
