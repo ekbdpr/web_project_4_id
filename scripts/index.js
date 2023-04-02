@@ -192,11 +192,7 @@ function showTemp(templateSelector, contentSelector, closeBtnSelector, evt) {
     document.removeEventListener("click", clickOutsideModal);
   });
 
-  document.addEventListener("keydown", (evt) => {
-    if (evt.key === "Escape" && document.contains(templateClone)) {
-      keydownHandler(evt);
-    }
-  });
+  document.addEventListener("keydown", keydownHandler);
 
   setTimeout(() => {
     document.addEventListener("click", clickOutsideModal);
