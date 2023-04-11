@@ -29,38 +29,32 @@ const initialCards = [
 
 // const for selectors
 const SELECTORS = {
-  ADD_BUTTON: ".profile__btn-add",
-  ADD_CLOSE: ".add__close",
-  ADD_LINK: ".add__link",
-  ADD_MODAL_TEMP: "#addPostTemp",
-  ADD_SUBMIT: ".add__submit",
-  ADD_TEMP: ".add",
-  ADD_TITLE: ".add__title",
+  ADD_BUTTON: ".btn__add",
+  ADD_MODAL_TEMP: "#add-card-template",
+  ADD_TEMP: ".add-card",
+  BUTTON_CLOSE: ".btn__close",
+  BUTTON_SUBMIT: ".btn__submit",
   CARD_CONTAINER: ".element",
   CARD_DELETE: ".element__delete-btn",
   CARD_HEART: ".element__heart-btn",
   CARD_IMAGE: ".element__image",
-  CARD_MODAL_TEMP: "#cardTemp",
+  CARD_MODAL_TEMP: "#card-template",
   CARD_TEMP: ".element__item",
   CARD_TEXT: ".element__text",
-  EDIT_BUTTON: ".profile__btn-edit",
-  EDIT_CLOSE: ".edit__close",
-  EDIT_JOB: ".edit__job",
-  EDIT_MODAL_TEMP: "#editProfileTemp",
-  EDIT_USERNAME: ".edit__username",
-  EDIT_SUBMIT: ".edit__submit",
-  EDIT_TEMP: ".edit",
+  EDIT_BUTTON: ".btn__edit",
+  EDIT_MODAL_TEMP: "#edit-profile-template",
+  EDIT_TEMP: ".edit-profile",
   FORM: ".form",
+  FORM_INPUT: ".form__input",
   MAIN_BODY: ".content",
   MODAL_TEMP: null,
   PAGE: ".pages",
-  PICTURE_CLOSE: ".show-picture__close",
   PICTURE_IMAGE: ".show-picture__image",
-  PICTURE_MODAL_TEMP: "#showPictTemp",
+  PICTURE_MODAL_TEMP: "#show-picture-template",
   PICTURE_TEMP: ".show-picture",
   PICTURE_TEXT: ".show-picture__text",
+  PROFILE_ABOUT: ".profile__about",
   PROFILE_USERNAME: ".profile__username",
-  PROFILE_JOB: ".profile__job",
 };
 
 // reusable functions
@@ -97,7 +91,7 @@ function showCard(card) {
       showTemp(
         SELECTORS.PICTURE_MODAL_TEMP,
         SELECTORS.PICTURE_TEMP,
-        SELECTORS.PICTURE_CLOSE,
+        SELECTORS.BUTTON_CLOSE,
         evt
       );
     });
@@ -116,9 +110,10 @@ function showCard(card) {
 function addCard(evt) {
   evt.preventDefault();
 
+  const formInput = Array.from(document.querySelectorAll(SELECTORS.FORM_INPUT));
   const newCard = {
-    name: getElement(SELECTORS.ADD_TITLE).value,
-    link: getElement(SELECTORS.ADD_LINK).value,
+    name: formInput[0].value,
+    link: formInput[1].value,
   };
 
   initialCards.push(newCard);
@@ -173,7 +168,7 @@ function showTemp(templateSelector, contentSelector, closeBtnSelector, evt) {
 
     case SELECTORS.ADD_TEMP:
       setTimeout(() => {
-        addEventListener(SELECTORS.ADD_SUBMIT, "click", (evt) => {
+        addEventListener(SELECTORS.BUTTON_SUBMIT, "click", (evt) => {
           addCard(evt);
           document.removeEventListener("click", clickOutsideModal);
         });
@@ -228,14 +223,19 @@ function togglePage(temp) {
 
 function profileValue(clickOutsideModal) {
   setTimeout(() => {
-    getElement(SELECTORS.EDIT_USERNAME).value = getElement(
-      SELECTORS.PROFILE_USERNAME
-    ).textContent;
-    getElement(SELECTORS.EDIT_JOB).value = getElement(
-      SELECTORS.PROFILE_JOB
-    ).textContent;
+    const formInput = Array.from(
+      document.querySelectorAll(SELECTORS.FORM_INPUT)
+    );
 
-    addEventListener(SELECTORS.EDIT_SUBMIT, "click", (evt) => {
+    formInput.forEach((input, index) => {
+      if (index === 0) {
+        input.value = getElement(SELECTORS.PROFILE_USERNAME).textContent;
+      } else if (index === 1) {
+        input.value = getElement(SELECTORS.PROFILE_ABOUT).textContent;
+      }
+    });
+
+    addEventListener(SELECTORS.BUTTON_SUBMIT, "click", (evt) => {
       submitProfileChanges(evt, clickOutsideModal);
     });
   }, 100);
@@ -244,12 +244,15 @@ function profileValue(clickOutsideModal) {
 function submitProfileChanges(evt, clickOutsideModal) {
   evt.preventDefault();
 
-  getElement(SELECTORS.PROFILE_USERNAME).textContent = getElement(
-    SELECTORS.EDIT_USERNAME
-  ).value;
-  getElement(SELECTORS.PROFILE_JOB).textContent = getElement(
-    SELECTORS.EDIT_JOB
-  ).value;
+  const formInput = Array.from(document.querySelectorAll(SELECTORS.FORM_INPUT));
+
+  formInput.forEach((input, index) => {
+    if (index === 0) {
+      getElement(SELECTORS.PROFILE_USERNAME).textContent = input.value;
+    } else if (index === 1) {
+      getElement(SELECTORS.PROFILE_ABOUT).textContent = input.value;
+    }
+  });
 
   hidePopUp();
   document.removeEventListener("click", clickOutsideModal);
@@ -261,9 +264,13 @@ function heartButtonToggle(evt) {
 
 // global event listener
 addEventListener(SELECTORS.EDIT_BUTTON, "click", () =>
-  showTemp(SELECTORS.EDIT_MODAL_TEMP, SELECTORS.EDIT_TEMP, SELECTORS.EDIT_CLOSE)
+  showTemp(
+    SELECTORS.EDIT_MODAL_TEMP,
+    SELECTORS.EDIT_TEMP,
+    SELECTORS.BUTTON_CLOSE
+  )
 );
 
 addEventListener(SELECTORS.ADD_BUTTON, "click", () =>
-  showTemp(SELECTORS.ADD_MODAL_TEMP, SELECTORS.ADD_TEMP, SELECTORS.ADD_CLOSE)
+  showTemp(SELECTORS.ADD_MODAL_TEMP, SELECTORS.ADD_TEMP, SELECTORS.BUTTON_CLOSE)
 );

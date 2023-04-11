@@ -1,0 +1,17 @@
+.btn__edit {
+  grid-area: button;
+  min-width: 24px;
+  min-height: 24px;
+  border: 1px solid #fff;
+  transition: opacity 0.2s linear;
+}
+@media screen and (max-width: 600px) {
+  .btn__edit {
+    min-width: 18px;
+    min-height: 18px;
+  }
+}
+.btn__edit:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
