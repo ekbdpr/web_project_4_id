@@ -1,4 +1,4 @@
-import { initialCards, Card } from "./card.js";
+import { initialCards, Card } from "./Card.js";
 import { showModalWindow } from "./utils.js";
 
 const pageContent = document.querySelector(".content");

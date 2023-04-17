@@ -1,6 +1,6 @@
-import { initialCards } from "./card.js";
+import { initialCards } from "./Card.js";
 import { renderElements, togglePage, pageContent } from "./index.js";
-import { enableValidation } from "./validation.js";
+import { FormValidator } from "./FormValidator.js";
 
 // global variables
 let templateContainer = "";
@@ -44,7 +44,7 @@ function showModalWindow(tempId, tempContainer, evt) {
 
   setTimeout(() => {
     document.addEventListener("click", closeOnClickAway);
-    enableValidation();
+    new FormValidator().enableValidation();
   }, 100);
 }
 // ----------------------------------------------------------------
