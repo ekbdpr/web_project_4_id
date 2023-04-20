@@ -1,4 +1,4 @@
-.btn__add {
+.btn_add {
   min-width: 150px;
   min-height: 50px;
   border: 2px solid #fff;
@@ -6,11 +6,11 @@
   transition: opacity 0.2s linear;
 }
 @media screen and (max-width: 1024px) {
-  .btn__add {
+  .btn_add {
     width: 100%;
   }
 }
-.btn__add:hover {
+.btn_add:hover {
   opacity: 0.6;
   cursor: pointer;
 }

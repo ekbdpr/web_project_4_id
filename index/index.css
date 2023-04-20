@@ -10,8 +10,8 @@
 /* buttons */
 @import url(../blocks/btn/btn.css);
 @import url(../blocks/btn/_inactive/btn_inactive.css);
-@import url(../blocks/btn/__edit/btn__edit.css);
-@import url(../blocks/btn/__add/btn__add.css);
+@import url(../blocks/btn/_edit/btn_edit.css);
+@import url(../blocks/btn/_add/btn_add.css);
 @import url(../blocks/btn/__close/btn__close.css);
 @import url(../blocks/btn/__close-icon/btn__close-icon.css);
 /* profile section */

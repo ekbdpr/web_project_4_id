@@ -30,13 +30,13 @@ function togglePage(temp) {
 // ----------------------------------------------------------------
 // event listeners for edit and add button events
 document
-  .querySelector(".btn__edit")
+  .querySelector(".btn_edit")
   .addEventListener("click", () =>
     showModalWindow("#edit-profile-template", ".edit-profile")
   );
 
 document
-  .querySelector(".btn__add")
+  .querySelector(".btn_add")
   .addEventListener("click", () =>
     showModalWindow("#add-card-template", ".add-card")
   );
