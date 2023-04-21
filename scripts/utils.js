@@ -1,11 +1,9 @@
-import { initialCards } from "./Card.js";
+// import module
 import { renderElements, togglePage, pageContent } from "./index.js";
-import { FormValidator } from "./FormValidator.js";
-
-// global variables
+import { initialCards, profileUsername, profileAbout } from "./constants.js";
+// ----------------------------------------------------------------
+// container
 let templateContainer = "";
-const profileUsername = document.querySelector(".profile__username");
-const profileAbout = document.querySelector(".profile__about");
 // ----------------------------------------------------------------
 // Modal Window functionality
 function showModalWindow(tempId, tempContainer, evt) {
@@ -44,9 +42,9 @@ function showModalWindow(tempId, tempContainer, evt) {
 
   setTimeout(() => {
     document.addEventListener("click", closeOnClickAway);
-    new FormValidator().enableValidation();
   }, 100);
 }
+
 // ----------------------------------------------------------------
 // remove event listeners when pressing esc or clicking outside of modal window
 function removeEvtListener() {
@@ -140,5 +138,4 @@ function pictureModalHandler(evt) {
     target.getAttribute("alt");
 }
 // ----------------------------------------------------------------
-
-export { showModalWindow };
+export { showModalWindow, templateContainer };

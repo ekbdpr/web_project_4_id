@@ -1,9 +1,10 @@
-import { initialCards, Card } from "./Card.js";
-import { showModalWindow } from "./utils.js";
+import { Card } from "./Card.js";
+import { initialCards, validationConfigs, pageContent } from "./constants.js";
+import { showModalWindow, templateContainer } from "./utils.js";
+import { FormValidator } from "./FormValidator.js";
 
-const pageContent = document.querySelector(".content");
 // pushing page contents to web page
-const renderElements = () => {
+function renderElements() {
   const element = document.querySelector(".element");
   element.innerHTML = "";
   initialCards.forEach((item) => {
@@ -11,7 +12,7 @@ const renderElements = () => {
     const cardElement = card.generateCard();
     element.prepend(cardElement);
   });
-};
+}
 renderElements();
 //----------------------------------------------------------------
 // toggle page scrollbar visibility when a modal window is opened and closed
@@ -28,17 +29,22 @@ function togglePage(temp) {
   }, 100);
 }
 // ----------------------------------------------------------------
+function enableValidator() {
+  const formValidation = new FormValidator(
+    templateContainer,
+    validationConfigs
+  );
+  formValidation.enableValidation();
+}
 // event listeners for edit and add button events
-document
-  .querySelector(".btn_edit")
-  .addEventListener("click", () =>
-    showModalWindow("#edit-profile-template", ".edit-profile")
-  );
+document.querySelector(".btn_edit").addEventListener("click", () => {
+  showModalWindow("#edit-profile-template", ".edit-profile");
+  enableValidator();
+});
 
-document
-  .querySelector(".btn_add")
-  .addEventListener("click", () =>
-    showModalWindow("#add-card-template", ".add-card")
-  );
+document.querySelector(".btn_add").addEventListener("click", () => {
+  showModalWindow("#add-card-template", ".add-card");
+  enableValidator();
+});
 // ----------------------------------------------------------------
 export { renderElements, togglePage, pageContent };
