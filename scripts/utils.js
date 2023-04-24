@@ -32,6 +32,7 @@ function showModalWindow(tempId, tempContainer, evt) {
       break;
   }
   pageContent.appendChild(getTemplate);
+
   togglePage(getTemplate);
 
   document.querySelector(".btn__close").addEventListener("click", () => {
@@ -41,10 +42,12 @@ function showModalWindow(tempId, tempContainer, evt) {
   document.addEventListener("keydown", keydownHandler);
 
   setTimeout(() => {
+    if (tempContainer === ".edit-profile" || tempContainer === ".add-card") {
+      getTemplate.querySelector("input").focus();
+    }
     document.addEventListener("click", closeOnClickAway);
   }, 100);
 }
-
 // ----------------------------------------------------------------
 // remove event listeners when pressing esc or clicking outside of modal window
 function removeEvtListener() {
@@ -74,6 +77,7 @@ function keydownHandler(evt) {
   }
 }
 // ----------------------------------------------------------------
+
 // show edit form modal window and edit button functions
 function profileValue() {
   const formInput = Array.from(document.querySelectorAll(".form__input"));
@@ -92,6 +96,7 @@ function profileValue() {
 
 function submitProfileChanges(evt) {
   evt.preventDefault();
+
   const formInput = Array.from(document.querySelectorAll(".form__input"));
 
   formInput.forEach((input, index) => {
@@ -102,15 +107,13 @@ function submitProfileChanges(evt) {
     }
   });
 
-  document
-    .querySelector(".btn__submit")
-    .removeEventListener("click", submitProfileChanges);
   removeEvtListener();
 }
 // ----------------------------------------------------------------
 // show add form modal window and add new card button functionality
 function addNewCard(evt) {
   evt.preventDefault();
+
   const formInput = Array.from(document.querySelectorAll(".form__input"));
   const newCard = {
     name: formInput[0].value,
