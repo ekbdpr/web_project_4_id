@@ -1,3 +1,4 @@
+import "../index/index.css";
 import { Card } from "./Card.js";
 import { initialCards, validationConfigs, pageContent } from "./constants.js";
 import { showModalWindow, templateContainer } from "./utils.js";
