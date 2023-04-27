@@ -1,0 +1,16 @@
+{
+  "name": "web_project_4_id",
+  "version": "1.0.0",
+  "description": "se project around the us",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eka Budhi Prasetya",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2",
+    "webpack-dev-server": "^4.13.3"
+  }
+}
