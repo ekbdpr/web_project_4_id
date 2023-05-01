@@ -4,6 +4,7 @@
   font-weight: 500;
   line-height: 1.14;
   color: #fff;
+  overflow-wrap: anywhere;
 }
 @media screen and (max-width: 1024px) {
   .profile__username {
