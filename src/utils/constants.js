@@ -25,7 +25,7 @@ export const initialCards = [
   },
 ];
 
-export const validationConfigs = {
+export const validationElements = {
   formInputSelector: ".form__input",
   submitButtonSelector: ".btn__submit",
   inputErrorModifier: "form__input-error",
@@ -33,6 +33,13 @@ export const validationConfigs = {
   buttonErrorModifier: "btn_inactive",
 };
 
-export const profileUsername = document.querySelector(".profile__username");
-export const profileAbout = document.querySelector(".profile__about");
-export const pageContent = document.querySelector(".content");
+export const cardElement = {};
+
+export const profileUserSelector = document.querySelector(".profile__username");
+export const profileAboutSelector = document.querySelector(".profile__about");
+export const contentSelector = document.querySelector(".content");
+export const mainContentSelector = document.querySelector(".main-content");
+
+export const content = ".content";
+export const element = ".element";
+export const editTemplate = "#edit-profile-template";

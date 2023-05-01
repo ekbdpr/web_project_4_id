@@ -1,11 +1,11 @@
-class FormValidator {
-  constructor(formElement, configs) {
+export default class FormValidator {
+  constructor(items, formElement) {
+    this._formInputSelector = items.formInputSelector;
+    this._submitButtonSelector = items.submitButtonSelector;
+    this._inputErrorModifier = items.inputErrorModifier;
+    this._errorModifier = items.errorModifier;
+    this._buttonErrorModifier = items.buttonErrorModifier;
     this._formElement = formElement;
-    this._formInputSelector = configs.formInputSelector;
-    this._submitButtonSelector = configs.submitButtonSelector;
-    this._inputErrorModifier = configs.inputErrorModifier;
-    this._errorModifier = configs.errorModifier;
-    this._buttonErrorModifier = configs.buttonErrorModifier;
   }
 
   _showInputError(inputElement) {
@@ -71,5 +71,3 @@ class FormValidator {
     this._setEventListeners();
   }
 }
-
-export { FormValidator };
