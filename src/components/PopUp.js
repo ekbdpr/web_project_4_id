@@ -1,36 +1,39 @@
 import { pageSettings } from "../utils/utils";
 
-export default class PopUp {
-  constructor(popUp) {
-    this._popUp = popUp;
+export default class Popup {
+  constructor(popup) {
+    this._popup = popup;
   }
 
   _getTemplate() {
-    this._class = this._popUp.replace("#", ".").replace("-template", "");
+    this._class = this._popup.replace("#", ".").replace("-template", "");
 
-    const popUpElement = document
-      .querySelector(this._popUp)
+    this._popupElement = document
+      .querySelector(this._popup)
       .content.querySelector(this._class)
       .cloneNode(true);
 
-    return popUpElement;
+    return this._popupElement;
   }
 
   _handleEscClose(evt) {
-    console.log("Escape key pressed");
     if (evt.key === "Escape" && document.contains(this._element)) {
       this.close();
-      this._removeEventListeners();
+    }
+  }
+
+  _handleClickOutClose(evt) {
+    if (!this._element.contains(evt.target)) {
+      this.close();
     }
   }
 
   open() {
     this._element = this._getTemplate();
-
-    pageSettings();
     setTimeout(() => {
+      pageSettings();
       this.setEventListeners();
-      this._element.classList.toggle("popUp");
+      this._element.classList.toggle("popup");
     }, 100);
 
     return this._element;
@@ -38,20 +41,22 @@ export default class PopUp {
 
   close() {
     pageSettings();
-    setTimeout(() => {
-      this._element.remove();
-    }, 100);
+    this._removeEventListeners();
+    this._element.remove();
   }
 
   setEventListeners() {
     this._closeButton = this._element.querySelector(".btn__close");
+    this._handleEscCloseFn = (evt) => this._handleEscClose(evt);
+    this._handleClickOutCloseFn = (evt) => this._handleClickOutClose(evt);
 
     this._closeButton.addEventListener("click", () => this.close());
-    this._handleEscCloseFn = (evt) => this._handleEscClose(evt);
     document.addEventListener("keydown", this._handleEscCloseFn);
+    document.addEventListener("click", this._handleClickOutCloseFn);
   }
 
-  removeEventListeners() {
+  _removeEventListeners() {
     document.removeEventListener("keydown", this._handleEscCloseFn);
+    document.removeEventListener("click", this._handleClickOutCloseFn);
   }
 }

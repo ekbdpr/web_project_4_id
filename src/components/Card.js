@@ -1,11 +1,11 @@
 import { initialCards } from "../utils/constants.js";
-// import { showModalWindow } from "../utils/utils.js";
 
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor({ handleCardClick }, data, cardSelector) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -50,24 +50,20 @@ export default class Card {
 
     this._element
       .querySelector(".element__image")
-      .addEventListener("click", (evt) => {
-        showModalWindow("#show-picture-template", ".show-picture", evt);
-      });
+      .addEventListener("click", this._handleCardClick.bind(this));
   }
 
   _removeEventListeners() {
     this._element
       .querySelector(".element__heart-btn")
-      .removeEventListener("click", this._handleHeartButton);
+      .removeEventListener("click", this._handleHeartButton.bind(this));
 
     this._element
       .querySelector(".element__delete-btn")
-      .removeEventListener("click", this._handleDeleteButton);
+      .removeEventListener("click", this._handleDeleteButton.bind(this));
 
     this._element
       .querySelector(".element__image")
-      .removeEventListener("click", (evt) => {
-        showModalWindow("#show-picture-template", ".show-picture", evt);
-      });
+      .removeEventListener("click", this._handleCardClick.bind(this));
   }
 }
