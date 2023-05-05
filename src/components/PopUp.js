@@ -52,11 +52,11 @@ export default class Popup {
 
     this._closeButton.addEventListener("click", () => this.close());
     document.addEventListener("keydown", this._handleEscCloseFn);
-    document.addEventListener("click", this._handleClickOutCloseFn);
+    document.addEventListener("mousedown", this._handleClickOutCloseFn);
   }
 
   _removeEventListeners() {
     document.removeEventListener("keydown", this._handleEscCloseFn);
-    document.removeEventListener("click", this._handleClickOutCloseFn);
+    document.removeEventListener("mousedown", this._handleClickOutCloseFn);
   }
 }
