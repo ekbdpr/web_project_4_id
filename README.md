@@ -15,7 +15,7 @@
 
 **Website Link**
 
-- [Tautan ke Website](https://ekbdpr.github.io/web_project_4_id/)
+- **_currently not working since this is my first time install webpack and everything is changed_**
 
 Website ini menampilkan foto pemandangan di beberapa wilayah yang ada di Amerika Serikat. Foto yang ditampilkan berbentuk card seperti dibawah ini :
 
@@ -39,4 +39,4 @@ Seluruh fungsi yang ada disini berjalan dengan baik dan dapat langsung ditampilk
 
   ![Picture](https://i.ibb.co/Y0N4hdM/image-2023-03-22-12-58-58.png)
 
-Silahkan dicoba dengan menekan [Tautan ke Website](https://ekbdpr.github.io/web_project_4_id/) ini yah. Terima kasih !
+Silahkan dicoba yaa. Terima kasih !
