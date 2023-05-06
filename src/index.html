@@ -6,28 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Around The US</title>
-    <link rel="shortcut icon" href="<%= require('./images/logo/logo_around-the-us.svg')%>" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/logo/logo_around-the-us.svg" type="image/x-icon">
 </head>
 
 <body class="content">
     <!-- contents -->
     <div class="main-content">
         <header class="header">
-            <img src="<%= require('./images/logo/logo_around-the-us.svg')%>" alt="around the US logo"
-                class="header__logo">
+            <img src="./images/logo/logo_around-the-us.svg" alt="around the US logo" class="header__logo">
             <hr class="header__line">
         </header>
         <main>
             <div class="profile">
-                <img src="<%= require('./images/avatar_image.png')%>" alt="profile picture" class="profile__picture">
+                <img src="./images/avatar_image.png" alt="profile picture" class="profile__picture">
                 <div class="profile__info">
                     <h1 class="profile__username">Jacques Cousteau</h1>
                     <p class="profile__about">Penjelajah</p>
-                    <button class="btn btn_edit"><img src="<%= require('./images/symbols/pencil_symbol.svg')%>"
+                    <button class="btn btn_edit"><img src="./images/symbols/pencil_symbol.svg"
                             alt="edit button"></button>
                 </div>
-                <button class="btn btn_add"><img src="<%= require('./images/symbols/plus_symbol.svg')%>"
-                        alt="add button"></button>
+                <button class="btn btn_add"><img src="./images/symbols/plus_symbol.svg" alt="add button"></button>
             </div>
             <ul class="element">
             </ul>
@@ -40,11 +38,11 @@
     <template id="card-template">
         <li class="element__item">
             <div class="element__container">
-                <img src=" " alt="" class="element__image">
+                <img src="#" alt="" class="element__image">
                 <p class="element__text"></p>
-                <button class="btn element__heart-btn"><img src="<%= require('./images/symbols/heart.svg')%>"
+                <button class="btn element__heart-btn"><img src="./images/symbols/heart.svg"
                         alt="heart symbol"></button>
-                <button class="btn element__delete-btn"><img src="<%= require('./images/symbols/delete.svg')%>"
+                <button class="btn element__delete-btn"><img src="./images/symbols/delete.svg"
                         alt="delete symbol"></button>
             </div>
         </li>
@@ -52,7 +50,7 @@
     <template id="edit-profile-template">
         <div class="edit-profile">
             <div class="edit-profile__container">
-                <button class="btn btn__close"><img src="<%= require('./images/symbols/close.svg')%>" alt="close icon"
+                <button class="btn btn__close"><img src="./images/symbols/close.svg" alt="close icon"
                         class="btn__close-icon"></button>
                 <span class="form__title">Edit Profil</span>
                 <!-- novalidate to disable html5 validator and instead use JS validation -->
@@ -73,7 +71,7 @@
     <template id="add-card-template">
         <div class="add-card">
             <div class="add-card__container">
-                <button class="btn btn__close"><img src="<%= require('./images/symbols/close.svg')%>" alt="close icon"
+                <button class="btn btn__close"><img src="./images/symbols/close.svg" alt="close icon"
                         class="btn__close-icon"></button>
                 <span class="form__title">Tempat baru</span>
                 <!-- novalidate to disable html5 validator and instead use JS validation -->
@@ -96,9 +94,9 @@
     <template id="show-picture-template">
         <div class="show-picture">
             <div class="show-picture__container">
-                <button class="btn btn__close"><img src="<%= require('./images/symbols/close.svg')%>" alt="close icon"
+                <button class="btn btn__close"><img src="./images/symbols/close.svg" alt="close icon"
                         class="btn__close-icon"></button>
-                <img src=" " alt="" class="show-picture__image">
+                <img src="#" alt="" class="show-picture__image">
                 <p class="show-picture__text"></p>
             </div>
         </div>
