@@ -1,12 +1,13 @@
 import "../styles/index.css";
-import FormValidator from "../components/FormValidator.js";
+import Api from "../components/Api.js";
 import Card from "../components/Card.js";
-import Section from "../components/Section.js";
-import PopupWithImage from "../components/PopupWithImage";
+import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm";
+import PopupWithImage from "../components/PopupWithImage";
+import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
+import { deleteCard, toggleHeart } from "../utils/utils.js";
 import {
-  initialCards,
   validationElements,
   content,
   element,
@@ -19,44 +20,78 @@ import {
   profileUserSelector,
   profileAboutSelector,
 } from "../utils/constants.js";
+
+// ----------------------------------------------------------------
+// initialize cards api
+const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/web_idn_02",
+  headers: {
+    authorization: "008c1c55-3b56-46f6-9605-a10cac4bcdce",
+    "Content-Type": "application/json",
+  },
+});
 // ----------------------------------------------------------------
 // rendering cards to page
-const cardList = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const card = new Card(
+const loadCards = () => {
+  api
+    .getInitialCard()
+    .then((result) => {
+      const cardList = new Section(
         {
-          handleCardClick: (evt) => {
-            const showPopup = new Section(
+          items: result,
+          renderer: (item) => {
+            const card = new Card(
               {
-                items: evt.target,
-                renderer: (item) => {
-                  const imageModal = new PopupWithImage(
-                    item,
-                    showPictureTemplate
-                  );
-                  const showImageModal = imageModal.open();
-                  showPopup.addItem(showImageModal);
+                handleCardClick: (evt) => {
+                  popupImage(evt);
+                },
+
+                handleDeleteClick: (evt) => {
+                  api
+                    .deleteCard(item._id)
+                    .then(() => {
+                      deleteCard(evt);
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    });
+                },
+
+                handleLikeClick: (evt) => {
+                  api
+                    .likeCard(item._id)
+                    .then(() => {
+                      toggleHeart(evt);
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    });
                 },
               },
-              content
+              item,
+              cardTemplate
             );
-            showPopup.renderItems();
+            const cardElement = card.generateCard();
+            cardList.addItem(cardElement);
           },
         },
-        item,
-        cardTemplate
+        element
       );
-      const cardElement = card.generateCard();
-      cardList.addItem(cardElement);
-    },
-  },
-  element
-);
-cardList.renderItems();
+      cardList.clear();
+      cardList.renderItems();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+loadCards();
 //----------------------------------------------------------------
 // get current user info
+api.getUserInfo().then((data) => {
+  profileUserSelector.textContent = data.name;
+  profileAboutSelector.textContent = data.about;
+});
+
 const userInfo = new UserInfo({
   userName: profileUserSelector,
   userAbout: profileAboutSelector,
@@ -71,7 +106,15 @@ const popupEditForm = new Section(
         {
           handleEventSubmit: (value) => {
             userInfo.setUserInfo({ name: value.name, about: value.title });
-            popupWindows.close();
+            console.log(value);
+            api
+              .setUserInfo(value)
+              .then(() => {
+                popupWindows.close();
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           },
         },
         item
@@ -104,9 +147,16 @@ const popupAddForm = new Section(
               name: value.title,
               link: value.link,
             };
-            initialCards.unshift(newCard);
-            cardList.clear();
-            cardList.renderItems();
+            api
+              .postCard(newCard)
+              .then(() => {
+                setTimeout(() => {
+                  loadCards();
+                }, 100);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
             popupWindows.close();
           },
         },
@@ -121,6 +171,22 @@ const popupAddForm = new Section(
   content
 );
 // ----------------------------------------------------------------
+// popup image modal
+const popupImage = (evt) => {
+  const showPopup = new Section(
+    {
+      items: evt.target,
+      renderer: (item) => {
+        const imageModal = new PopupWithImage(item, showPictureTemplate);
+        const showImageModal = imageModal.open();
+        showPopup.addItem(showImageModal);
+      },
+    },
+    content
+  );
+  showPopup.renderItems();
+};
+// ----------------------------------------------------------------
 // global event listeners
 editButtonSelector.addEventListener("click", () => {
   popupEditForm.renderItems();
@@ -129,4 +195,3 @@ addButtonSelector.addEventListener("click", () => {
   popupAddForm.renderItems();
 });
 // ---------------------------------------------------------------
-export { cardList };

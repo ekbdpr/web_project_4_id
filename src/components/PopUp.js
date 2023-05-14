@@ -32,7 +32,7 @@ export default class Popup {
     this._element = this._getTemplate();
     setTimeout(() => {
       pageSettings();
-      this.setEventListeners();
+      this._setEventListeners();
       this._element.classList.toggle("popup");
     }, 100);
 
@@ -45,7 +45,7 @@ export default class Popup {
     this._element.remove();
   }
 
-  setEventListeners() {
+  _setEventListeners() {
     this._closeButton = this._element.querySelector(".btn__close");
     this._handleEscCloseFn = (evt) => this._handleEscClose(evt);
     this._handleClickOutCloseFn = (evt) => this._handleClickOutClose(evt);
