@@ -18,9 +18,12 @@
         </header>
         <main>
             <div class="profile">
-                <img src="./images/avatar_image.png" alt="profile picture" class="profile__picture">
+                <button class="btn btn_profile">
+                    <img src="#" alt="profile picture" class="profile__picture"><img
+                        src="./images/symbols/edit_symbol.svg" alt="profile edit"
+                        class="profile__picture-edit"></button>
                 <div class="profile__info">
-                    <h1 class="profile__username"></h1>
+                    <p class="profile__username"></p>
                     <p class="profile__about"></p>
                     <button class="btn btn_edit"><img src="./images/symbols/pencil_symbol.svg"
                             alt="edit button"></button>
@@ -46,6 +49,24 @@
                         alt="delete symbol"></button>
             </div>
         </li>
+    </template>
+    <template id="profile-picture-template">
+        <div class="profile-picture">
+            <div class="profile-picture__container">
+                <button class="btn btn__close"><img src="./images/symbols/close.svg" alt="close icon"
+                        class="btn__close-icon"></button>
+                <span class="form__title">Ubah foto profil</span>
+                <!-- novalidate to disable html5 validator and instead use JS validation -->
+                <form class="form" novalidate>
+                    <input type="url" name="link" id="profile-picture-link" class="form__input"
+                        placeholder="Tautan gambar" required>
+                    <div class="form__text-container">
+                        <span class="form__input-error profile-picture-link-error"></span>
+                    </div>
+                    <button type="submit" class="btn btn__submit">Simpan</button>
+                </form>
+            </div>
+        </div>
     </template>
     <template id="edit-profile-template">
         <div class="edit-profile">

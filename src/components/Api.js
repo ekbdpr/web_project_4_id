@@ -26,6 +26,14 @@ export default class Api {
     }).then(this._checkResponse);
   }
 
+  setUserPicture(value) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      body: JSON.stringify({ avatar: value }),
+      headers: this._headers,
+    }).then(this._checkResponse);
+  }
+
   setUserInfo(value) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",

@@ -1,4 +1,4 @@
-.add-card__container {
+.profile-picture__container {
   min-width: 430px;
   padding: 34px 36px;
   background-color: #fff;
@@ -7,7 +7,7 @@
   position: relative;
 }
 @media screen and (max-width: 600px) {
-  .add-card__container {
+  .profile-picture__container {
     min-width: 282px;
   }
 }

@@ -1,6 +1,7 @@
 import {
   contentSelector,
   mainContentSelector,
+  profileEditSelector,
   elementItem,
 } from "../utils/constants.js";
 // ----------------------------------------------------------------
@@ -23,5 +24,15 @@ export const toggleHeart = (evt) => {
 // delete card
 export const deleteCard = (evt) => {
   evt.target.closest(elementItem).remove();
+};
+// ----------------------------------------------------------------
+// delete card
+export const editProfileActive = () => {
+  profileEditSelector.style.display = "block";
+};
+// ----------------------------------------------------------------
+// delete card
+export const editProfileInactive = () => {
+  profileEditSelector.style.display = "none";
 };
 // ----------------------------------------------------------------

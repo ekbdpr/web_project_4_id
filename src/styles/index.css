@@ -10,12 +10,14 @@
 /* buttons */
 @import url(../blocks/btn/btn.css);
 @import url(../blocks/btn/_inactive/btn_inactive.css);
+@import url(../blocks/btn/_profile/btn_profile.css);
 @import url(../blocks/btn/_edit/btn_edit.css);
 @import url(../blocks/btn/_add/btn_add.css);
 @import url(../blocks/btn/__close/btn__close.css);
 @import url(../blocks/btn/__close-icon/btn__close-icon.css);
 /* profile section */
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__picture-edit/profile__picture-edit.css);
 @import url(../blocks/profile/__picture/profile__picture.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__username/profile__username.css);
@@ -40,6 +42,9 @@
 @import url(../blocks/form/__input/_type/_error/form__input_type_error.css);
 @import url(../blocks/form/__text-container/form__text-container.css);
 @import url(../blocks/form/__input-error/form__input-error.css);
+/* profile form */
+@import url(../blocks/profile-picture/profile-picture.css);
+@import url(../blocks/profile-picture/__container/profile-picture__container.css);
 /* edit form */
 @import url(../blocks/edit-profile/edit-profile.css);
 @import url(../blocks/edit-profile/__container/edit-profile__container.css);

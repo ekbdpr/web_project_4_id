@@ -20,10 +20,16 @@ export const contentSelector = document.querySelector(".content");
 export const mainContentSelector = document.querySelector(".main-content");
 export const editButtonSelector = document.querySelector(".btn_edit");
 export const addButtonSelector = document.querySelector(".btn_add");
+export const profilePictureSelector =
+  document.querySelector(".profile__picture");
+export const profileEditSelector = document.querySelector(
+  ".profile__picture-edit"
+);
 
 export const content = ".content";
 export const element = ".element";
 export const elementItem = ".element__item";
+export const profileTemplate = "#profile-picture-template";
 export const editTemplate = "#edit-profile-template";
 export const addTemplate = "#add-card-template";
 export const cardTemplate = "#card-template";

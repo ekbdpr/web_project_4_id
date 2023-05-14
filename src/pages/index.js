@@ -6,12 +6,18 @@ import PopupWithForm from "../components/PopupWithForm";
 import PopupWithImage from "../components/PopupWithImage";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-import { deleteCard, toggleHeart } from "../utils/utils.js";
+import {
+  deleteCard,
+  toggleHeart,
+  editProfileActive,
+  editProfileInactive,
+} from "../utils/utils.js";
 import {
   validationElements,
   content,
   element,
   cardTemplate,
+  profileTemplate,
   editTemplate,
   addTemplate,
   showPictureTemplate,
@@ -19,8 +25,8 @@ import {
   addButtonSelector,
   profileUserSelector,
   profileAboutSelector,
+  profilePictureSelector,
 } from "../utils/constants.js";
-
 // ----------------------------------------------------------------
 // initialize cards api
 const api = new Api({
@@ -87,15 +93,49 @@ const loadCards = () => {
 loadCards();
 //----------------------------------------------------------------
 // get current user info
-api.getUserInfo().then((data) => {
-  profileUserSelector.textContent = data.name;
-  profileAboutSelector.textContent = data.about;
-});
+const getUserInfo = () => {
+  api.getUserInfo().then((data) => {
+    profilePictureSelector.src = data.avatar;
+    profileUserSelector.textContent = data.name;
+    profileAboutSelector.textContent = data.about;
+  });
+};
+getUserInfo();
 
 const userInfo = new UserInfo({
   userName: profileUserSelector,
   userAbout: profileAboutSelector,
 });
+// ----------------------------------------------------------------
+// popup add modal
+const popupProfileForm = new Section(
+  {
+    items: profileTemplate,
+    renderer: (item) => {
+      const popupWindows = new PopupWithForm(
+        {
+          handleEventSubmit: (value) => {
+            api
+              .setUserPicture(value.link)
+              .then(() => {
+                getUserInfo();
+                popupWindows.close();
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          },
+        },
+        item
+      );
+      const showFormModal = popupWindows.open();
+      const validation = new FormValidator(validationElements, showFormModal);
+      validation.enableValidation();
+      popupProfileForm.addItem(showFormModal);
+    },
+  },
+  content
+);
 // ----------------------------------------------------------------
 // popup edit modal
 const popupEditForm = new Section(
@@ -106,7 +146,6 @@ const popupEditForm = new Section(
         {
           handleEventSubmit: (value) => {
             userInfo.setUserInfo({ name: value.name, about: value.title });
-            console.log(value);
             api
               .setUserInfo(value)
               .then(() => {
@@ -188,10 +227,15 @@ const popupImage = (evt) => {
 };
 // ----------------------------------------------------------------
 // global event listeners
+profilePictureSelector.addEventListener("click", () => {
+  popupProfileForm.renderItems();
+});
 editButtonSelector.addEventListener("click", () => {
   popupEditForm.renderItems();
 });
 addButtonSelector.addEventListener("click", () => {
   popupAddForm.renderItems();
 });
+profilePictureSelector.addEventListener("mouseover", editProfileActive);
+profilePictureSelector.addEventListener("mouseout", editProfileInactive);
 // ---------------------------------------------------------------
