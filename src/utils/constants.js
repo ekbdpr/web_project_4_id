@@ -28,7 +28,6 @@ export const profileEditSelector = document.querySelector(
 
 export const content = ".content";
 export const element = ".element";
-export const elementItem = ".element__item";
 export const profileTemplate = "#profile-picture-template";
 export const editTemplate = "#edit-profile-template";
 export const addTemplate = "#add-card-template";

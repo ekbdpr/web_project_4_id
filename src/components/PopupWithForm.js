@@ -6,6 +6,14 @@ export default class PopupWithForm extends Popup {
     this._handleEventSubmit = handleEventSubmit;
   }
 
+  renderLoading(isLoading, save) {
+    if (isLoading) {
+      this._element.querySelector(".btn__submit").textContent = "Menyimpan...";
+    } else {
+      this._element.querySelector(".btn__submit").textContent = save;
+    }
+  }
+
   _getInputValues() {
     this._formValues = {};
 

@@ -25,28 +25,39 @@ export default class Card {
 
   generateCard() {
     this._element = this._getTemplate();
+
+    this._image = this._element.querySelector(".element__image");
+    this._imageText = this._element.querySelector(".element__text");
+    this._cardLikes = this._element.querySelector(".element__like-counts");
+
+    this._image.src = this._link;
+    this._image.alt = this._name;
+    this._imageText.textContent = this._name;
+    this._cardLikes.textContent = this._likes.length;
+
     this._setEventListeners();
-
-    this._element.querySelector(".element__image").src = this._link;
-    this._element.querySelector(".element__image").alt = this._name;
-    this._element.querySelector(".element__text").textContent = this._name;
-    this._element.querySelector(".element__like-counts").textContent =
-      this._likes.length;
-
-    this._toggleHeart();
+    this._initialLikeState();
 
     return this._element;
   }
 
-  _toggleHeart() {
+  deleteCard(e) {
+    e.target.closest(".element__item").remove();
+  }
+
+  toggleLike() {
+    this._heartButton = this._element.querySelector(".element__heart-btn");
+    this._cardLikes = this._element.querySelector(".element__like-counts");
+
+    this._heartButton.classList.toggle("element__heart-btn_active");
+    this._cardLikes.textContent = this._likes.length;
+  }
+
+  _initialLikeState() {
     if (this.isLiked()) {
-      this._element
-        .querySelector(".element__heart-btn")
-        .classList.add("element__heart-btn_active");
+      this._heartButton.classList.add("element__heart-btn_active");
     } else {
-      this._element
-        .querySelector(".element__heart-btn")
-        .classList.remove("element__heart-btn_active");
+      this._heartButton.classList.remove("element__heart-btn_active");
     }
   }
 
@@ -55,16 +66,11 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._element
-      .querySelector(".element__heart-btn")
-      .addEventListener("click", this._handleLikeClick);
+    this._heartButton = this._element.querySelector(".element__heart-btn");
+    this._deleteButton = this._element.querySelector(".element__delete-btn");
 
-    this._element
-      .querySelector(".element__delete-btn")
-      .addEventListener("click", this._handleDeleteClick);
-
-    this._element
-      .querySelector(".element__image")
-      .addEventListener("click", this._handleCardClick);
+    this._heartButton.addEventListener("click", this._handleLikeClick);
+    this._deleteButton.addEventListener("click", this._handleDeleteClick);
+    this._image.addEventListener("click", this._handleCardClick);
   }
 }
