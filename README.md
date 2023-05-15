@@ -11,32 +11,32 @@
 
 **Figma**
 
-- [Tautan ke proyek di Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+- [Tautan ke proyek di Figma](https://www.figma.com/file/hpO6mtH7hEk13ej5KcF4Pw/Web_Brief_Sprint_9_ID-%7C-JavaScript-Terapan?t=xcWawxjHssuWqma5-0)
 
 **Website Link**
 
-- **_currently not working since this is my first time install webpack and everything is changed_**
+- [Eka Budhi Prasetya - Around The Us](https://ekbdpr.github.io/web_project_4_id/)
 
-Website ini menampilkan foto pemandangan di beberapa wilayah yang ada di Amerika Serikat. Foto yang ditampilkan berbentuk card seperti dibawah ini :
+Website ini menampilkan berbagai macam gambar pemandangan. Foto yang ditampilkan berbentuk card seperti dibawah ini :
 
-![Website Interfaces](https://i.ibb.co/dK76nz2/image-2023-03-22-12-41-44.png)
+![Website Interfaces](https://i.ibb.co/ngncYDY/image-2023-05-16-04-54-54.png)
 
-Seluruh fungsi yang ada disini berjalan dengan baik dan dapat langsung ditampilkan pada websitenya realtime (setidaknya disisi frontend). Feature yang tersedia ialah :
+Seluruh fungsi yang ada pada website ini berjalan dengan baik dan telah disempurnakan dengan cara mengintegrasikan dengan server API. Pengguna dapat menggunakan berbagai macam fitur diantaranya :
 
-- Mengganti nama pengguna dan title nya
-
-  ![Profile](https://i.ibb.co/mCPHWR7/image-2023-03-22-12-48-06.png)
-
+- Mengganti nama pengguna, title serta profile picture dengan mengklik tombol terkait
 - Menampilkan gambar secara fullsize ketika pengguna mengklik gambar yang diinginkan
+- Menambahkan serta menghapus gambar yang diinginkan
+- Tombol like dengan angka yang menghitung berapa banyak yang menyukai gambar nya.
 
-  ![Picture](https://i.ibb.co/DQpdtFJ/image-2023-03-22-12-50-33.png)
+**Teknologi yang diterapkan untuk web development yaitu :**
 
-- Menambahkan gambar dan menghapus serta menampilkan di website (Taman Nasional Vanoise menghilang !!!)
-
-  ![Picture](https://i.ibb.co/XxxkfjJ/image-2023-03-22-12-55-18.png)
-
-- Yang tidak kalah pentingnya ! Memberikan like dengan menekan tombol HEART <3 (Maaf yah Lago di Braies)
-
-  ![Picture](https://i.ibb.co/Y0N4hdM/image-2023-03-22-12-58-58.png)
+- BEM Methodology
+- FlexBox & Grid Layout
+- DOM Manipulation
+- Classes
+- Form Validation
+- Webpack, Babel, loader
+- Rest API
+- OOP
 
 Silahkan dicoba yaa. Terima kasih !
