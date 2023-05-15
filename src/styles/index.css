@@ -30,6 +30,7 @@
 @import url(../blocks/element/__text/element__text.css);
 @import url(../blocks/element/__heart-btn/element__heart-btn.css);
 @import url(../blocks/element/__heart-btn/_active/element__heart-btn_active.css);
+@import url(../blocks/element/__like-counts/element__like-counts.css);
 @import url(../blocks/element/__delete-btn/element__delete-btn.css);
 /* footer */
 @import url(../blocks/footer/footer.css);

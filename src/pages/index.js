@@ -8,7 +8,6 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import {
   deleteCard,
-  toggleHeart,
   editProfileActive,
   editProfileInactive,
 } from "../utils/utils.js";
@@ -38,13 +37,18 @@ const api = new Api({
 });
 // ----------------------------------------------------------------
 // rendering cards to page
-const loadCards = () => {
+const loadInfo = () => {
   api
-    .getInitialCard()
-    .then((result) => {
+    .getInitialInfo()
+    .then(([cards, user]) => {
+      userInfo.setUserInfo({
+        name: user.name,
+        about: user.about,
+        avatar: user.avatar,
+      });
       const cardList = new Section(
         {
-          items: result,
+          items: cards,
           renderer: (item) => {
             const card = new Card(
               {
@@ -63,15 +67,26 @@ const loadCards = () => {
                     });
                 },
 
-                handleLikeClick: (evt) => {
-                  api
-                    .likeCard(item._id)
-                    .then(() => {
-                      toggleHeart(evt);
-                    })
-                    .catch((err) => {
-                      console.log(err);
-                    });
+                handleLikeClick: () => {
+                  if (card.isLiked(false) === false) {
+                    api
+                      .likeCard(item._id)
+                      .then(() => {
+                        loadInfo();
+                      })
+                      .catch((err) => {
+                        console.log(err);
+                      });
+                  } else {
+                    api
+                      .dislikeCard(item._id)
+                      .then(() => {
+                        loadInfo();
+                      })
+                      .catch((err) => {
+                        console.log(err);
+                      });
+                  }
                 },
               },
               item,
@@ -90,21 +105,13 @@ const loadCards = () => {
       console.log(err);
     });
 };
-loadCards();
+loadInfo();
 //----------------------------------------------------------------
 // get current user info
-const getUserInfo = () => {
-  api.getUserInfo().then((data) => {
-    profilePictureSelector.src = data.avatar;
-    profileUserSelector.textContent = data.name;
-    profileAboutSelector.textContent = data.about;
-  });
-};
-getUserInfo();
-
 const userInfo = new UserInfo({
   userName: profileUserSelector,
   userAbout: profileAboutSelector,
+  userAvatar: profilePictureSelector,
 });
 // ----------------------------------------------------------------
 // popup add modal
@@ -118,7 +125,7 @@ const popupProfileForm = new Section(
             api
               .setUserPicture(value.link)
               .then(() => {
-                getUserInfo();
+                loadInfo();
                 popupWindows.close();
               })
               .catch((err) => {
@@ -190,7 +197,7 @@ const popupAddForm = new Section(
               .postCard(newCard)
               .then(() => {
                 setTimeout(() => {
-                  loadCards();
+                  loadInfo();
                 }, 100);
               })
               .catch((err) => {

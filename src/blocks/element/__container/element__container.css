@@ -4,6 +4,7 @@
   grid-template-columns: 243px 1fr;
   grid-template-areas:
     "image image"
-    "text heart";
+    "text heart"
+    "text count";
   position: relative;
 }

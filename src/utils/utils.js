@@ -16,22 +16,17 @@ export const pageSettings = () => {
   contentSelector.style.width = `calc(100% - ${scrollbarWidth}px)`;
 };
 // ----------------------------------------------------------------
-// toggle like button
-export const toggleHeart = (evt) => {
-  evt.target.classList.toggle("element__heart-btn_active");
-};
-// ----------------------------------------------------------------
 // delete card
 export const deleteCard = (evt) => {
   evt.target.closest(elementItem).remove();
 };
 // ----------------------------------------------------------------
-// delete card
+// display edit profile picture button
 export const editProfileActive = () => {
   profileEditSelector.style.display = "block";
 };
 // ----------------------------------------------------------------
-// delete card
+// remove edit profile picture button
 export const editProfileInactive = () => {
   profileEditSelector.style.display = "none";
 };
