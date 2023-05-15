@@ -52,6 +52,9 @@
 /* add form */
 @import url(../blocks/add-card/add-card.css);
 @import url(../blocks/add-card/__container/add-card__container.css);
+/* delete confirmation */
+@import url(../blocks/del-confirm/del-confirm.css);
+@import url(../blocks/del-confirm/__container/del-confirm__container.css);
 /* show picture */
 @import url(../blocks/show-picture/show-picture.css);
 @import url(../blocks/show-picture/__container/show-picture__container.css);

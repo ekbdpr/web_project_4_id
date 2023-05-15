@@ -31,5 +31,6 @@ export const element = ".element";
 export const profileTemplate = "#profile-picture-template";
 export const editTemplate = "#edit-profile-template";
 export const addTemplate = "#add-card-template";
+export const deleteCardTemplate = "#del-confirm-template";
 export const cardTemplate = "#card-template";
 export const showPictureTemplate = "#show-picture-template";

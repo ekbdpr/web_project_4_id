@@ -2,6 +2,7 @@ import "../styles/index.css";
 import Api from "../components/Api.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import PopupWithForm from "../components/PopupWithForm";
 import PopupWithImage from "../components/PopupWithImage";
 import Section from "../components/Section.js";
@@ -15,6 +16,7 @@ import {
   profileTemplate,
   editTemplate,
   addTemplate,
+  deleteCardTemplate,
   showPictureTemplate,
   editButtonSelector,
   addButtonSelector,
@@ -22,7 +24,6 @@ import {
   profileAboutSelector,
   profilePictureSelector,
 } from "../utils/constants.js";
-// ----------------------------------------------------------------
 // initialize cards api
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/web_idn_02",
@@ -31,7 +32,6 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-// ----------------------------------------------------------------
 // rendering cards to page
 let cardList;
 
@@ -51,7 +51,7 @@ api
               },
 
               handleDeleteClick: (e) => {
-                card.deleteCard(e);
+                confirmDelete(card, e);
                 api
                   .deleteCard(item._id)
                   .then()
@@ -97,13 +97,11 @@ api
   .catch((err) => {
     console.log(err);
   });
-//----------------------------------------------------------------
 // get current user info
 const userInfo = new UserInfo({
   userName: profileUserSelector,
   userAbout: profileAboutSelector,
 });
-// ----------------------------------------------------------------
 // popup add modal
 const popupProfileForm = new Section(
   {
@@ -137,7 +135,6 @@ const popupProfileForm = new Section(
   },
   content
 );
-// ----------------------------------------------------------------
 // popup edit modal
 const popupEditForm = new Section(
   {
@@ -177,7 +174,6 @@ const popupEditForm = new Section(
   },
   content
 );
-// ----------------------------------------------------------------
 // popup add modal
 const popupAddForm = new Section(
   {
@@ -217,7 +213,30 @@ const popupAddForm = new Section(
   },
   content
 );
-// ----------------------------------------------------------------
+// popup add modal
+const confirmDelete = (data, event) => {
+  const deleteCardModal = new Section(
+    {
+      items: deleteCardTemplate,
+      renderer: (item) => {
+        const popupWindows = new PopupWithConfirmation(
+          {
+            handleEventSubmit: () => {
+              data.deleteCard(event);
+              popupWindows.close();
+            },
+          },
+          item
+        );
+        const showFormModal = popupWindows.open();
+        deleteCardModal.addItem(showFormModal);
+      },
+    },
+    content
+  );
+  deleteCardModal.renderItems();
+};
+
 // popup image modal
 const popupImage = (evt) => {
   const showPopup = new Section(
@@ -233,7 +252,6 @@ const popupImage = (evt) => {
   );
   showPopup.renderItems();
 };
-// ----------------------------------------------------------------
 // global event listeners
 profilePictureSelector.addEventListener("click", () => {
   popupProfileForm.renderItems();
@@ -246,4 +264,3 @@ addButtonSelector.addEventListener("click", () => {
 });
 profilePictureSelector.addEventListener("mouseover", editProfileActive);
 profilePictureSelector.addEventListener("mouseout", editProfileInactive);
-// ---------------------------------------------------------------
