@@ -51,13 +51,7 @@ api
               },
 
               handleDeleteClick: (e) => {
-                confirmDelete(card, e);
-                api
-                  .deleteCard(item._id)
-                  .then()
-                  .catch((err) => {
-                    console.log(err);
-                  });
+                confirmDelete(item, card, e);
               },
 
               handleLikeClick: () => {
@@ -214,7 +208,7 @@ const popupAddForm = new Section(
   content
 );
 // popup add modal
-const confirmDelete = (data, event) => {
+const confirmDelete = (elem, data, event) => {
   const deleteCardModal = new Section(
     {
       items: deleteCardTemplate,
@@ -223,6 +217,12 @@ const confirmDelete = (data, event) => {
           {
             handleEventSubmit: () => {
               data.deleteCard(event);
+              api
+                .deleteCard(elem._id)
+                .then()
+                .catch((err) => {
+                  console.log(err);
+                });
               popupWindows.close();
             },
           },
